@@ -103,8 +103,5 @@ if __name__ == '__main__':
     imgs_dir = join(root_dir, 'person_imgs_'+subset)
     new_json_file = join(root_dir, 'annotations', subset+".json")
     coco_filter = coco_category_filter(json_file, imgs_dir, categ='person') # instanciate class
-    # coco_filter = coco_category_filter(json_val, imgs_dir_val, categ='person')
-    # get_imgs_from_json(json_train, categ='person')
-    # get_imgs_from_json(json_val, categ='person')
-    # coco_filter.save_imgs()
+    coco_filter.save_imgs()
     coco_filter.filter_json_by_category(new_json_file)
