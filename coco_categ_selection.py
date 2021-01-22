@@ -95,13 +95,17 @@ class coco_category_filter:
         return images, annotations
 
 
+def main(subset, year, root_dir, category='person'):
+    json_file = join(os.path.split(root_dir)[0], 'instances_'+subset+year+'.json')   # local path
+    imgs_dir = join(root_dir, category + '_' + subset)
+    new_json_file = join(root_dir, 'annotations', subset+".json")
+    coco_filter = coco_category_filter(json_file, imgs_dir, categ=category) # instanciate class
+    coco_filter.save_imgs()
+    coco_filter.filter_json_by_category(new_json_file)
+
+
 if __name__ == '__main__':
     subset, year='train', '2017'  # val - train
     root_dir = '/home/ubuntu/coco_person_ds/coco_dataset'
+    main(subset, year, root_dir, category='person'):
 
-    json_file = join(os.path.split(root_dir)[0], 'instances_'+subset+year+'.json')   # local path
-    imgs_dir = join(root_dir, 'person_imgs_'+subset)
-    new_json_file = join(root_dir, 'annotations', subset+".json")
-    coco_filter = coco_category_filter(json_file, imgs_dir, categ='person') # instanciate class
-    coco_filter.save_imgs()
-    coco_filter.filter_json_by_category(new_json_file)
