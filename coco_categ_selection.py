@@ -107,5 +107,4 @@ def main(subset, year, root_dir, category='person'):
 if __name__ == '__main__':
     subset, year='train', '2017'  # val - train
     root_dir = '/home/ubuntu/coco_person_ds/coco_dataset'
-    main(subset, year, root_dir, category='person'):
-
+    main(subset, year, root_dir, category='person')
